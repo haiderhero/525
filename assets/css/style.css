@@ -753,7 +753,7 @@ body.panel-open .stage__scrim{ opacity:1; }
 
   /* --- panel: full width, readable, clears bottom cluster --- */
   .panel{
-    width:100vw; padding:70px 16px 236px;
+    width:100vw; padding:70px 16px 232px;
     background:linear-gradient(180deg, rgba(8,7,6,.60) 0%, rgba(8,7,6,.92) 46%);
     backdrop-filter:none;
   }
@@ -761,27 +761,29 @@ body.panel-open .stage__scrim{ opacity:1; }
   .panel__close{ top:70px; inset-inline-start:14px; }
   .panel__title{ font-size:clamp(26px,8vw,36px); }
 
-  /* --- unified solid backdrop under the whole bottom cluster --- */
-  .dock{ padding:16px 10px calc(env(safe-area-inset-bottom) + 12px); gap:10px; background:none; }
+  /* ===== bottom cluster, clean separated rows =====
+     row 1 (top): contact icons        -> bottom ~128px
+     row 2 (mid): section pills         -> inside .dock (top of column)
+     row 3 (bot): suggest button        -> inside .dock (bottom of column) */
+  .dock{ padding:12px 10px calc(env(safe-area-inset-bottom) + 10px); gap:9px; background:none; }
   .dock::before{
     content:""; position:fixed; left:0; right:0; bottom:0; height:210px;
-    background:linear-gradient(0deg, rgba(9,8,7,.99) 0%, rgba(9,8,7,.99) 66%, rgba(9,8,7,.55) 86%, rgba(9,8,7,0) 100%);
+    background:linear-gradient(0deg, rgba(9,8,7,.99) 0%, rgba(9,8,7,.99) 84%, rgba(9,8,7,0) 100%);
     z-index:-1; pointer-events:none;
   }
   .dock__label{ display:none; }
   .dock__pills{ overflow-x:auto; flex-wrap:nowrap; max-width:100vw; padding:2px 6px; -webkit-overflow-scrolling:touch; }
   .dock__pills::-webkit-scrollbar{ display:none; }
-  .pill{ flex:0 0 auto; padding:11px 18px; }
-  .suggest{ font-size:12px; padding:7px 14px; }
+  .pill{ flex:0 0 auto; padding:10px 17px; }
+  .suggest{ font-size:12px; padding:6px 14px; }
 
-  /* --- contact: sits just above the dock, centered, on the backdrop --- */
   .contact{
     inset-inline:0; left:0; right:0;
-    bottom:calc(env(safe-area-inset-bottom) + 98px);
+    bottom:calc(env(safe-area-inset-bottom) + 128px);   /* clearly above the pills */
     flex-direction:row; align-items:center; justify-content:center; gap:0;
   }
   .loc{ display:none; }
-  .contact__actions{ justify-content:center; }
+  .contact__actions{ justify-content:center; gap:10px; }
   .act{ width:36px; height:36px; }
 
   /* --- bigger touch targets --- */
